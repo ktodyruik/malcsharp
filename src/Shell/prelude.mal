@@ -1,0 +1,9 @@
+(clr-using "Shell.ShellAdapter")
+(clr-using "Shell.Testing.Test")
+
+(load-file "pp.mal")
+
+(defmacro! eq? =)
+
+(def! now (fn* ()
+	(clr-static-call "Test" "Now")))

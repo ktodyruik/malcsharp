@@ -1,0 +1,4 @@
+(def! square (fn* (n) (* n n)))
+
+(def! double (fn* (n) (* n 2)))
+
