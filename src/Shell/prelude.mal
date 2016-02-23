@@ -3,7 +3,7 @@
 
 (load-file "pp.mal")
 
-(defmacro! eq? =)
+(def! eq? =)
 
 (def! now (fn* ()
 	(clr-static-call "Test" "Now")))

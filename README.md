@@ -69,6 +69,30 @@ nil
 > (clr-static-call "Test" "Person")
 {"Name" "Kerry" "Age" "43" "Numbers" (1 2 3 4 5) "Person" {"Name" "Long John Silver" "Age" nil "Numbers" nil "Person" nil}}
 
+;; PPrint an object with a nested object
+> (def! person (clr-static-call "Test" "Person"))
+> (pprint person)
+{"Name" "Kerry"
+ "Age" "43"
+ "Numbers" (1
+       2
+       3
+       4
+       5)
+ "Person" {"Name" "Long John Silver"
+       "Age" nil
+       "Numbers" nil
+       "Person" nil}}
+nil
+
+;; Use keywords and use the eq? alias instead of =. eq? is in prelude.mal
+
+> (def! kw :abc)
+:abc
+
+> (eq? kw :abc)
+true
+
 
 
 ```
