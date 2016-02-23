@@ -36,6 +36,14 @@ Examples
 --------
 
 ```
+; Call a custom function (defined in Interpreter.cs)
+> (ping)
+"Pong"
+
+; Reference an assembly dynamically (not necessary if your assembly is already referenced in your project)
+> (clr-reference "AssemblyName")
+nil
+
 ; Include the test class and make some static calls
 ; Actually this is already in prelude.mal
 > (clr-using "Shell.Testing.Test")
@@ -52,7 +60,7 @@ nil
 > (clr-static-call "Test" "RandomNumbers" 3)
 (72 2 91)
 
-; Load pprint.mal
+; Load pprint.mal (not really necessary as it is loaded in prelude.mal)
 > (load-file "pp.mal")
 
 ; Try out pprint
@@ -89,6 +97,9 @@ nil
 
 > (def! kw :abc)
 :abc
+
+> (= kw :abc)
+true
 
 > (eq? kw :abc)
 true
