@@ -103,7 +103,4 @@ true
 
 > (eq? kw :abc)
 true
-
-
-
 ```
