@@ -1,3 +1,7 @@
+[![forthebadge](http://forthebadge.com/images/badges/uses-badges.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/validated-html2.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/does-not-contain-treenuts.svg)](http://forthebadge.com)
+
 malcsharp
 =========
 
