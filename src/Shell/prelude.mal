@@ -7,3 +7,5 @@
 
 (def! now (fn* ()
 	(clr-static-call "Test" "Now")))
+
+(def! load load-file)
