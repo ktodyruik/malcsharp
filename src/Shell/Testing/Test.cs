@@ -39,6 +39,33 @@ namespace Shell.Testing
                 Person = new TestSimpleObject { Name = "Long John Silver" }
             };
         }
+
+        public static List<TestSimpleObject> GetPeople()
+        {
+            return new List<TestSimpleObject>
+            {
+                new TestSimpleObject
+                {
+                    Name = "Kerry",
+                    Age = "43",
+                },
+                new TestSimpleObject
+                {
+                    Name = "Jim",
+                    Age = "Forty-something",
+                },
+                new TestSimpleObject
+                {
+                    Name = "Homer",
+                    Age = "43",
+                },
+                new TestSimpleObject
+                {
+                    Name = "Bart",
+                    Age = "8",
+                }
+            };
+        }
     }
 
     public class TestSimpleObject

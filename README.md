@@ -97,6 +97,10 @@ nil
        "Person" nil}}
 nil
 
+;; Access a property in person
+> (get person "Name")
+"Kerry"
+
 ;; Use keywords and use the eq? alias instead of =. eq? is in prelude.mal
 
 > (def! kw :abc)
@@ -107,4 +111,54 @@ true
 
 > (eq? kw :abc)
 true
+
+
+;; Work with list of objects...
+> (def! people (clr-static-call "Test" "GetPeople"))
+
+; Pretty print the whole list of people
+> (pp people)
+({"Name" "Kerry"
+ "Age" "43"
+ "Numbers" nil
+ "Person" nil}
+ {"Name" "Jim"
+  "Age" "Forty-something"
+  "Numbers" nil
+  "Person" nil}
+ {"Name" "Homer"
+  "Age" "43"
+  "Numbers" nil
+  "Person" nil}
+ {"Name" "Bart"
+  "Age" "8"
+  "Numbers" nil
+  "Person" nil})
+
+; Pretty print the first person in the list
+> (pp (first people))
+{"Name" "Kerry"
+ "Age" "43"
+ "Numbers" nil
+ "Person" nil}
+
+; Find the person in the list named Jim
+> (filter (fn* (p) (eq? (get p "Name") "Jim")) people)
+({"Name" "Jim" "Age" "Forty-something" "Numbers" nil "Person" nil})
+
+; Filter everyone in the list who is 43 and pretty-print the results
+> (pp (filter (fn* (p) (eq? (get p "Age") "43")) people))
+({"Name" "Kerry"
+ "Age" "43"
+ "Numbers" nil
+ "Person" nil}
+ {"Name" "Homer"
+  "Age" "43"
+  "Numbers" nil
+  "Person" nil})
+
+; Combine map and filter to get the first names of everyone in the list who is 43
+> (map (fn* (p) (get p "Name")) (filter (fn* (p) (eq? (get p "Age") "43")) people))
+("Kerry" "Homer")
+
 ```

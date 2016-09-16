@@ -28,7 +28,7 @@ namespace Shell
             catch (Exception e)
             {
                 ColorConsole.WriteLine(("Error: " + e.Message).Red());
-                ColorConsole.WriteLine(("Stacktrace: " + e.StackTrace).DarkRed());
+                ColorConsole.WriteLine(("Stacktrace: " + e.InnerException.StackTrace).DarkRed()); ;
             }
 
             while (keepRunning)
@@ -48,7 +48,8 @@ namespace Shell
                 catch (Exception e)
                 {
                     ColorConsole.WriteLine(("Error: " + e.Message).Red());
-                    ColorConsole.WriteLine(("Stacktrace: " + e.StackTrace).DarkRed());
+                    ColorConsole.WriteLine(("Error: " + e.GetBaseException().Message).Red());
+                    ColorConsole.WriteLine(("Stacktrace: " + e.GetBaseException().StackTrace).DarkRed()); ;
                 }
             }
 
@@ -59,7 +60,7 @@ namespace Shell
         // http://www.codeproject.com/Articles/16164/Managed-Application-Shutdown
         static void GraceFullCtrlC()
         {
-            Console.CancelKeyPress += delegate(object sender,
+            Console.CancelKeyPress += delegate (object sender,
                                     ConsoleCancelEventArgs e)
             {
                 if (e.SpecialKey == ConsoleSpecialKey.ControlBreak)
@@ -67,7 +68,7 @@ namespace Shell
                     ColorConsole.WriteLine("Exiting...".Yellow());
                     // Environment.Exit(1) would NOT do 
                     // a cooperative shutdown. No finalizers are called!
-                    Thread t = new Thread(delegate()
+                    Thread t = new Thread(delegate ()
                     {
                         //ColorConsole.WriteLine("Asynchronous shutdown started".Yellow());
                         Environment.Exit(1);
@@ -84,7 +85,7 @@ namespace Shell
                     // out event handler we have to spin
                     // up another thread. If somebody of the
                     // CLR team reads this. Please fix!
-                    new Thread(delegate()
+                    new Thread(delegate ()
                     {
                         //ColorConsole.WriteLine("Asynchronous shutdown started".Yellow());
                         Environment.Exit(2);

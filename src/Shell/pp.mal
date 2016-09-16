@@ -34,6 +34,7 @@
 (def! pprint (fn* [obj]
   (println (pp- obj 0))))
 
+(def! pp pprint)
 
 ;;(pprint '(7 8 9 "ten" [11 12 [13 14]] 15 16))
 ;;(pprint '{:abc 123 :def {:ghi 456 :jkl [789 "ten eleven twelve"]}})

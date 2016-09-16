@@ -267,6 +267,13 @@ namespace Shell
 //                Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(obj, null));
                 dictionary.Add(prop.Name, MapDotNetToMal(prop.GetValue(obj, null)));
             }
+
+            var fieldInfos = obj.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var field in fieldInfos)
+            {
+                dictionary.Add(field.Name, MapDotNetToMal(field.GetValue(obj)));
+            }
+
             return new MalHashMap(dictionary);
         }
 
