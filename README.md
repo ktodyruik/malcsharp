@@ -161,4 +161,9 @@ true
 > (map (fn* (p) (get p "Name")) (filter (fn* (p) (eq? (get p "Age") "43")) people))
 ("Kerry" "Homer")
 
+; Previous example rewritten using the clojure-style threading operator
+> (->> people 
+      (filter (fn* (p) (eq? (get p "Age") "43"))) 
+	  (map (fn* (p) (get p "Name"))))
+("Kerry" "Homer")	  
 ```
