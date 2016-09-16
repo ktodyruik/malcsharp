@@ -1,6 +1,7 @@
 (clr-using "Shell.ShellAdapter")
 (clr-using "Shell.Testing.Test")
 
+(load-file "core.mal")
 (load-file "pp.mal")
 
 (def! eq? =)
